@@ -1,6 +1,7 @@
  <div id="container"></div>
  <script>
      function loadXMLDoc(filename) {
+	parser = new DOMParser();
         if (window.ActiveXObject) {
              xhttp = new ActiveXObject("Msxml2.XMLHTTP");
         } else {
@@ -8,7 +9,7 @@
         }
         xhttp.open("GET", filename, false);
         xhttp.send("");
-        return xhttp.responseText;
+        return parser.parseFromString(xhttp.responseText,"text/xml");
      }
 
      xml = loadXMLDoc("https://raw.githubusercontent.com/J-Christophe/Test/master/test.xml");
